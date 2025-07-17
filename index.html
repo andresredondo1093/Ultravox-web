@@ -1484,12 +1484,14 @@
                                         2.  **Fase 2: Captura de Datos**: Una vez el cliente esté viendo los coches, tu siguiente objetivo es recoger sus datos para una pre-reserva usando la herramienta \`registrar_cliente\`.
 
                                         ## Flujo de Conversación
-                                        1.  **Saludo y Detección**: Saluda brevemente y pregunta qué coche necesita.
+                                        1.  **Saludo y Detección**: Saluda brevemente diciendo "Hola, soy Carolina, tu asistente de Avis Canarias. ¿En qué te puedo ayudar?".
                                         2.  **Uso de Herramienta 1**: En cuanto el cliente mencione un modelo, usa INMEDIATAMENTE \`redirigir_coches\`.
                                         3.  **Transición a Fase 2**: Justo después de redirigir, pregunta: "¿Ves alguno que te interese? Si quieres, puedo iniciar una pre-reserva. Solo necesito tu nombre, apellidos, número de teléfono y DNI."
                                         4.  **Recopilación de Datos**: Espera a que el cliente te dé los cuatro datos.
                                         5.  **Uso de Herramienta 2**: Cuando tengas toda la información, usa la herramienta \`registrar_cliente\` para enviar los datos.
-                                        6.  **Confirmación**: Agradece al cliente y confirma que has recibido los datos.
+                                        6.  **Confirmación**: Cuando tengas todo listo, confirma que has recibido los datos y que se ha iniciado la pre-reserva, luego termina la 
+                                        conversacion usando la siguiente frase "He recibido todos los datos y he ejecutado la pre-reserva. En breve te llegará un email con un enlace para confirmar tu reserva.
+                                         Muchas gracias por alquilar tu vehículo con Avis Canarias. Si tienes alguna duda o problema, no dudes en contactarme. ¡Que tengas un buen día!".
 
                                         ## Reglas de Comunicación - MUY IMPORTANTE
                                         - Sé SIEMPRE breve, precisa y concisa en todas tus respuestas.
@@ -1514,10 +1516,25 @@
                     body: JSON.stringify({
                         systemPrompt: promptCarolina,
                         languageHint: "es",
-                        model: "fixie-ai/ultravox",
+                        model: "fixie-ai/ultravox-gemma3-27b-preview",
                         temperature: 0.4,
                         voice: "74d331a7-36d3-4efb-b596-9ba381a0c5d5",
-                        medium: { "webRtc": {} },
+                        medium: {
+                            webRtc: {}
+                          },
+                          externalVoice: {
+                            elevenLabs: {
+                                voiceId: "SplyIQAjgy4DKGAnOrHi",
+                                model: "eleven_turbo_v2_5",
+                                speed: 1.0,
+                                stability: 0.8,
+                                similarityBoost: 0.8,
+                                style: 0,
+                                useSpeakerBoost: true,
+                                optimizeStreamingLatency: 3, // Clave para WebRTC
+                                maxSampleRate: 24000
+                            }
+                        },
                         "selectedTools": [
                             {
                                 "temporaryTool": {
