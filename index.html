@@ -1500,10 +1500,10 @@
 
                 // Ejemplo de uso
                 console.log(promptCarolina);
-                const response = await fetch('http://localhost:8081', {
+                const response = await fetch('https://api.ultravox.ai/api/calls', {
                     method: 'POST',
                     headers: {
-                        'X-API-Key': apiKeyInput.value,
+                        'X-Unsafe-API-Key': apiKeyInput.value,
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
