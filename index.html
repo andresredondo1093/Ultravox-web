@@ -1518,22 +1518,8 @@
                         languageHint: "es",
                         model: "fixie-ai/ultravox-gemma3-27b-preview",
                         temperature: 0.4,
-                        medium: {
-                            webRtc: {}
-                          },
-                          externalVoice: {
-                            elevenLabs: {
-                                voiceId: "SplyIQAjgy4DKGAnOrHi",
-                                model: "eleven_turbo_v2_5",
-                                speed: 1.0,
-                                stability: 0.8,
-                                similarityBoost: 0.8,
-                                style: 0,
-                                useSpeakerBoost: true,
-                                optimizeStreamingLatency: 3, // Clave para WebRTC
-                                maxSampleRate: 24000
-                            }
-                        },
+                        voice: "74d331a7-36d3-4efb-b596-9ba381a0c5d5",
+                        medium: { "webRtc": {} },
                         "selectedTools": [
                             {
                                 "temporaryTool": {
